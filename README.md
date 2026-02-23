@@ -19,23 +19,55 @@ Melalui aplikasi ini, pengguna diberikan kemudahan untuk menjelajahi katalog bar
 - Perhitungan harga total
 - Pesan keranjang kosong
 
-## Struktur Folder
+# 🛒 Shopping Cart Hands-On with Product Search
 
-```
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
+
+Proyek ini adalah aplikasi praktis sistem keranjang belanja mini yang dibangun di atas framework Flutter. Fokus utama proyek ini adalah demonstrasi manajemen state global menggunakan `ChangeNotifier` dan pengayaan fitur navigasi melalui sistem pencarian produk yang dinamis.
+
+---
+
+## 🚀 Fitur Utama
+
+- **Real-Time Product Search:** Fitur unggulan yang memungkinkan pengguna mencari produk secara instan melalui overlay pencarian yang responsif.
+- **Global State Management:** Sinkronisasi data keranjang belanja di seluruh halaman aplikasi menggunakan `Provider`.
+- **Dynamic Cart System:** - Lencana (Badge) jumlah barang yang terupdate otomatis.
+  - Penyesuaian kuantitas produk (Increment/Decrement).
+  - Penghapusan item dengan feedback SnackBar.
+- **Automated Calculation:** Perhitungan total belanja secara real-time.
+- **Responsive UI:** Layout Grid yang adaptif untuk katalog produk dan list yang bersih untuk halaman keranjang.
+
+---
+
+## 🛠️ Arsitektur & Nilai Tambah
+
+### 🌟 Nilai Tambah: Integrated Search System
+Salah satu keunggulan teknis dalam proyek ini adalah implementasi **`SearchDelegate`**. Daripada hanya menampilkan daftar statis, aplikasi ini menyediakan antarmuka pencarian native yang:
+1. **Meningkatkan UX:** Memberikan animasi transisi yang halus dan standar industri.
+2. **Actionable Results:** Memungkinkan pengguna menambahkan barang ke keranjang langsung dari layar hasil pencarian.
+3. **Clean Implementation:** Memisahkan logika filter dari widget utama, menjaga kode tetap modular.
+
+### Manajemen State
+Menggunakan **Provider Pattern** untuk menghindari *prop drilling*. `CartModel` bertindak sebagai *Single Source of Truth* yang memberitahu UI (`notifyListeners()`) setiap kali ada perubahan pada data keranjang.
+
+---
+
+## 📂 Struktur Folder
+
+```text
 lib/
-│
 ├── models/
 │   ├── product.dart
 │   ├── cart_item.dart
 │   └── cart_model.dart
-│
 ├── pages/
 │   ├── product_list_page.dart
 │   └── cart_page.dart
-│
+├── widgets/
+│   └── product_search.dart
 └── main.dart
 ```
-
 ## Penjelasan Arsitektur
 
 ### Product Model
@@ -113,8 +145,19 @@ Seluruh fungsi berjalan sesuai harapan dan state tetap konsisten antar halaman.
 
 ## Kesimpulan
 
-Proyek ini membuktikan efisiensi Provider dalam menyederhanakan manajemen state global pada ekosistem Flutter. Dengan mengintegrasikan ChangeNotifier, antarmuka pengguna (UI) dapat bereaksi dan diperbarui secara otomatis tanpa proses prop drilling atau pengiriman data manual antar widget yang rumit.
+Proyek ini mendemonstrasikan efisiensi Flutter dalam menangani logika aplikasi e-commerce yang kompleks secara sederhana. Dengan memisahkan Logika Bisnis (Model) dari Antarmuka (View), aplikasi ini tidak hanya mudah dibaca (Clean Code) tetapi juga siap untuk dikembangkan lebih lanjut (skalabel), seperti integrasi ke API Backend atau Firebase.
 
-Penerapan arsitektur yang memisahkan antara Logika Bisnis (Model) dan Antarmuka (Pages) tidak hanya meningkatkan keterbacaan kode (clean code), tetapi juga mempermudah skalabilitas proyek di masa depan, seperti integrasi dengan database lokal maupun API eksternal.
+Implementasi fitur Search mempertegas bahwa aplikasi ini dibangun dengan memperhatikan sisi fungsionalitas dan kenyamanan pengguna secara optimal.
 
 ---
+
+### LAMPIRAN
+Halaman Utama
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cd630aa7-cb1b-4310-978e-059cc04580c6" />
+
+Ketika klik add, maka akan keluar output "Laptop Gaming ditambahkan ke cart"
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/41d81c44-becb-4b7f-8241-fb71072334d4" />
+
+Halaman Search seperti ini, jika ingin mencari nama barang
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/71d2be23-f7dc-4d6e-9eb9-4faff33a2798" />
+
